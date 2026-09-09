@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Horaire, résultats et classements du tournoi Bleu & Or.">
+    <title>Tournoi Bleu & Or</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./config.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">Futsal scolaire</p>
+        <h1 id="tournament-name">Tournoi Bleu & Or</h1>
+        <p id="tournament-details" class="hero__details">Horaire, résultats et classements</p>
+        <p id="publication-date" class="publication-date">Chargement des données…</p>
+        <p class="hero__actions"><a id="registration-link" class="hero__button" href="#" target="_blank" rel="noopener noreferrer" hidden>Inscrire une équipe</a></p>
+      </div>
+    </header>
+    <main class="page-shell">
+      <section id="status" class="notice" role="status" aria-live="polite" hidden></section>
+      <section class="toolbar" aria-label="Filtres">
+        <label>Tournoi<select id="tournament-filter"></select></label>
+        <label>Division<select id="division-filter"></select></label>
+        <label>Équipe<select id="team-filter"></select></label>
+      </section>
+      <nav class="tabs" aria-label="Sections du tournoi">
+        <button class="tab is-active" type="button" data-tab="overview">Aperçu</button>
+        <button class="tab" type="button" data-tab="schedule">Matchs</button>
+        <button class="tab" type="button" data-tab="playoffs">Séries</button>
+        <button class="tab" type="button" data-tab="standings">Classements</button>
+        <button class="tab" type="button" data-tab="teams">Équipes</button>
+        <button class="tab" type="button" data-tab="photos">Photos</button>
+      </nav>
+      <section id="overview" class="panel is-active" aria-labelledby="overview-title">
+        <h2 id="overview-title">Aperçu</h2>
+        <div id="summary-cards" class="summary-grid"></div>
+        <div class="section-heading"><h3>Prochains matchs</h3></div>
+        <div id="upcoming-matches" class="match-grid"></div>
+      </section>
+      <section id="schedule" class="panel" aria-labelledby="schedule-title">
+        <div class="section-heading">
+          <h2 id="schedule-title">Horaire et résultats</h2>
+          <label class="compact-filter">Afficher<select id="match-status-filter">
+            <option value="all">Tous les matchs</option><option value="upcoming">À venir</option><option value="final">Terminés</option>
+          </select></label>
+        </div>
+        <div id="matches" class="match-grid"></div>
+      </section>
+      <section id="playoffs" class="panel" aria-labelledby="playoffs-title">
+        <h2 id="playoffs-title">Séries éliminatoires</h2>
+        <div class="section-heading"><h3>Champions</h3></div>
+        <div id="champions-content" class="champion-grid"></div>
+        <div class="section-heading"><h3>Tableau des séries</h3></div>
+        <div id="playoffs-content"></div>
+      </section>
+      <section id="standings" class="panel" aria-labelledby="standings-title">
+        <h2 id="standings-title">Classements</h2><div id="standings-content"></div>
+      </section>
+      <section id="teams" class="panel" aria-labelledby="teams-title">
+        <h2 id="teams-title">Équipes et pools</h2><div id="teams-content" class="team-grid"></div>
+      </section>
+      <section id="photos" class="panel" aria-labelledby="photos-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="photos-title">Photos</h2>
+            <p class="section-intro">Moments publiés par l’organisation du tournoi.</p>
+          </div>
+        </div>
+        <div id="photos-content" class="photo-grid"></div>
+        <p class="load-more-wrap"><button id="photos-load-more" class="secondary-button" type="button" hidden>Voir plus de photos</button></p>
+      </section>
+    </main>
+    <dialog id="photo-dialog" class="photo-dialog" aria-labelledby="photo-dialog-title">
+      <button id="photo-dialog-close" class="photo-dialog__close" type="button" aria-label="Fermer">×</button>
+      <img id="photo-dialog-image" alt="">
+      <div class="photo-dialog__caption">
+        <strong id="photo-dialog-title"></strong>
+        <span id="photo-dialog-details"></span>
+      </div>
+    </dialog>
+    <footer><p>Données publiées par l'organisation du tournoi.</p></footer>
+    <noscript>JavaScript doit être activé pour consulter les données du tournoi.</noscript>
+  </body>
+</html>
